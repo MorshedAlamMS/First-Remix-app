@@ -39,8 +39,11 @@ export const users: User[] = [
     }
 ]
 
-export const loginUser = (user: User) => {
-    const existingUser = users.find(u => u.email === user.email && u.password === user.password)
+
+export const findUserByEmailPassword = (email: string, password: string) => users.find(u => u.email === email && u.password === password)
+
+export const addUser = (user: User) => {
+    const existingUser = findUserByEmailPassword(user.email, user.password);
 
     if (existingUser) {
         return "You are logged in as " + existingUser.name;
@@ -49,13 +52,9 @@ export const loginUser = (user: User) => {
     }
 }
 
-export const findUser = (id: string) => {
+export const findUser = (id: string) => users.find(u => u.id === id)
 
-}
 
-export const findUserByEmailPassword = (email: string, password: string) => {
-
-}
 
 export const deleteUser = (id: stirng) => {
 
