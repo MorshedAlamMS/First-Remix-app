@@ -47,14 +47,14 @@ export default function Index() {
   const navigate = useNavigate()
 
   useEffect(() => {
+    if (actionData?.user) {
+      localStorage.setItem("loggedUser", JSON.stringify(actionData.user));
+      navigate(`/profile/${actionData?.user?.id}`)
+    }
     const storedUser = localStorage.getItem("loggedUser");
     if (storedUser) {
       const user = JSON.parse(storedUser)
       location.pathname = `/profile/${user?.id}`
-    }
-    if (actionData?.user) {
-      localStorage.setItem("loggedUser", JSON.stringify(actionData.user));
-      navigate(`/profile/${actionData?.user?.id}`)
     }
 
 
