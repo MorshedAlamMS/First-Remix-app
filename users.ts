@@ -56,6 +56,12 @@ export const findUser = (id: string) => users.find(u => u.id === id)
 
 
 
-export const deleteUser = (id: stirng) => {
+export const deleteUser = (id: string) => {
+    return users.filter(u => u.id !== id)
 
+    // const index = users.findIndex(u => u.id === id)
+
+    // if (index !== -1) {
+    //     return users.splice(index, 1);
+    // }
 }

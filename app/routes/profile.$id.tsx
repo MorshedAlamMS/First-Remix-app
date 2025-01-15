@@ -1,5 +1,5 @@
 import { Form, redirect, useLoaderData } from "@remix-run/react";
-import { findUser, User } from "users"
+import { deleteUser, findUser, User } from "users"
 
 export const loader = ({ params }: { params: { id: string } }) => {
     const user = findUser(params.id);
@@ -17,6 +17,7 @@ export const action = async ({ params, request }: { params: { id: string }, requ
         return redirect("/")
     }
     if (actionType === "delete") {
+        deleteUser(params.id)
         return redirect("/")
     }
 }
